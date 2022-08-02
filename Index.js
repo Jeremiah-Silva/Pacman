@@ -16,3 +16,31 @@ class Boundary {
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
+
+const map = [['-', '-', '-', '-', '-', '-'],
+             ['-', ' ', ' ', ' ', ' ', '-'],
+             ['-', ' ', ' ', ' ', ' ', '-'],
+             ['-', '-', '-', '-', '-', '-']
+]
+const boundaries = []
+
+map.forEach((row) => {
+    row.forEach((symbol) => {
+        switch(symbol) {
+            case '-': 
+              boundaries.push(
+                new Boundary({
+                position: {
+                    x:0, 
+                    y:0
+                 }
+               })
+              )
+              break
+        }
+    })
+})
+
+boundaries.forEach((Boundary) => {
+    Boundary.draw()
+})
