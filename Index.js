@@ -24,15 +24,15 @@ const map = [['-', '-', '-', '-', '-', '-'],
 ]
 const boundaries = []
 
-map.forEach((row) => {
-    row.forEach((symbol) => {
+map.forEach((row, i) => {
+    row.forEach((symbol, j) => {
         switch(symbol) {
             case '-': 
               boundaries.push(
                 new Boundary({
                 position: {
-                    x:0, 
-                    y:0
+                    x:40 * j, 
+                    y:40 * i
                  }
                })
               )
