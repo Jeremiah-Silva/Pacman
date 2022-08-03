@@ -133,7 +133,23 @@ function animate() {
           }
         }
     } else if (keys.a.pressed && lastKey === 'a') {
-        player.velocity.x = -5
+        for (let i = 0; i < boundaries.length; i++) {
+            const Boundary = boundaries [i]
+              if (
+              circleClollidesWithRectangle({
+                   circle: {...player, velocity: {
+                     x: -5,
+                     y: 0 
+                    }},
+                   rectangle: Boundary
+              })
+            ) {
+              player.velocity.x = 0
+              break
+            } else {
+              player.velocity.x = -5
+            }
+          }
     } else if (keys.s.pressed && lastKey === 's') {
         for (let i = 0; i < boundaries.length; i++) {
             const Boundary = boundaries [i]
@@ -153,7 +169,23 @@ function animate() {
             }
           }
     }else if (keys.d.pressed && lastKey === 'd') {
-        player.velocity.x = 5        
+        for (let i = 0; i < boundaries.length; i++) {
+            const Boundary = boundaries [i]
+              if (
+              circleClollidesWithRectangle({
+                   circle: {...player, velocity: {
+                     x: 5,
+                     y: 0 
+                    }},
+                   rectangle: Boundary
+              })
+            ) {
+              player.velocity.x = 0
+              break
+            } else {
+              player.velocity.x = 5
+            }
+          }        
     }
 
     boundaries.forEach((Boundary) => {
