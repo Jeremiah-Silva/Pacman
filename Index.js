@@ -40,12 +40,6 @@ class Player {
      this.position.y += this.velocity.y
     }
 }
-const map = [['-', '-', '-', '-', '-', '-'],
-             ['-', ' ', ' ', ' ', ' ', '-'],
-             ['-', ' ', '-', '-', ' ', '-'],
-             ['-', ' ', ' ', ' ', ' ', '-'],
-             ['-', '-', '-', '-', '-', '-']
-]
 
 const boundaries = []
 const player = new Player({
@@ -58,6 +52,30 @@ const player = new Player({
         y: 0
     }
 })
+
+const keys = {
+    w: {
+        pressed: false
+    },
+    a: {
+        pressed: false
+    },
+    s: {
+        pressed: false
+    },
+    d: {
+        pressed: false
+    },
+}
+
+let lastKey = ''
+
+const map = [['-', '-', '-', '-', '-', '-'],
+             ['-', ' ', ' ', ' ', ' ', '-'],
+             ['-', ' ', '-', '-', ' ', '-'],
+             ['-', ' ', ' ', ' ', ' ', '-'],
+             ['-', '-', '-', '-', '-', '-']
+]
 
 map.forEach((row, i) => {
     row.forEach((symbol, j) => {
@@ -82,45 +100,56 @@ function animate() {
     boundaries.forEach((Boundary) => {
         Boundary.draw()
     })
-player.update()
-}
+    player.update()
+    player.velocity.x = 0
+    player.velocity.y = 0 
 
+    if (keys.w.pressed && lastKey === 'w') {
+        player.velocity.y = -5
+    } else if (keys.a.pressed && lastKey === 'a') {
+        player.velocity.x = -5
+    } else if (keys.s.pressed && lastKey === 's') {
+        player.velocity.y = 5 
+    }else if (keys.d.pressed && lastKey === 'd') {
+        player.velocity.x = 5        
+    }
+}
 animate()
 
 addEventListener('keydown', ({ key }) => {
 switch(key) {
     case 'w':
-    player.velocity.y = -5  
+    keys.w.pressed = true
+    lastKey = 'w'    
     break
     case 'a':
-    player.velocity.x = -5  
+    keys.a.pressed = true
+    lastKey = 'a'
     break
     case 's':
-    player.velocity.y = 5  
+    keys.s.pressed = true
+    lastKey = 's'
     break
     case 'd':
-    player.velocity.x = 5  
+    keys.d.pressed = true
+    lastKey = 'd'
     break
  }
-
- console.log(player.velocity)
 })
 
 addEventListener('keyup', ({ key }) => {
     switch(key) {
         case 'w':
-        player.velocity.y = 0  
+        keys.w.pressed = false
         break
         case 'a':
-        player.velocity.x = 0  
+        keys.a.pressed = false
         break
         case 's':
-        player.velocity.y = 0  
+        keys.s.pressed = false
         break
         case 'd':
-        player.velocity.x = 0  
+        keys.d.pressed = false
         break
      }
-    
-     console.log(player.velocity)
     })
