@@ -109,7 +109,6 @@ function createImage(src) {
     return image
 }
 
-
 map.forEach((row, i) => {
     row.forEach((symbol, j) => {
         switch(symbol) {
@@ -189,7 +188,6 @@ map.forEach((row, i) => {
                  image: createImage('./img/block.png')
                })
               )
-
         break
         case '[':
           boundaries.push(
@@ -300,7 +298,6 @@ map.forEach((row, i) => {
                 x: j * Boundary.width + Boundary.width / 2,
                 y: i * Boundary.height + Boundary.height / 2
               },
-        
             })
           )
         }
@@ -321,10 +318,10 @@ function circleClollidesWithRectangle( { circle, rectangle}) {
         <= 
         rectangle.position.x + rectangle.width)
 }
+
 function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, canvas.width, canvas.height)
-    
     if (keys.w.pressed && lastKey === 'w') {
         for (let i = 0; i < boundaries.length; i++) {
           const Boundary = boundaries [i]
@@ -398,14 +395,24 @@ function animate() {
             }
           }        
     }
-
-pellets.forEach(pellet => {
+for(let i = pellets.length -1; 0< i; i--) {
+    const pellet = pellets[i]
     pellet.draw()
-})
+    if (
+        Math.hypot(
+        pellet.position.x - player.position.x, 
+        pellet.position.y - player.position.y
+        ) < 
+        pellet.radius + player.radius
+        ) { 
+       console.log('touching')
+       pellets.splice(i, 1)
+    }
+}    
+  
 
     boundaries.forEach((Boundary) => {
         Boundary.draw()
-
         if (
        circleClollidesWithRectangle({
             circle: player,
@@ -420,8 +427,6 @@ pellets.forEach(pellet => {
     player.update()
     //player.velocity.x = 0
     //player.velocity.y = 0 
-
-   
 }
 animate()
 
