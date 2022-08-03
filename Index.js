@@ -33,8 +33,13 @@ class Player {
         c.fill()
         c.closePath()
     }
+
+    update() {
+     this.draw()
+     this.position.x += this.velocity.x
+     this.position.y += this.velocity.y
+    }
 }
-    
 const map = [['-', '-', '-', '-', '-', '-'],
              ['-', ' ', ' ', ' ', ' ', '-'],
              ['-', ' ', '-', '-', ' ', '-'],
@@ -75,4 +80,23 @@ boundaries.forEach((Boundary) => {
     Boundary.draw()
 })
 
-player.draw()
+player.update()
+
+addEventListener('keydown', ({ key }) => {
+switch(key) {
+    case 'w':
+    player.velocity.y = -5  
+    break
+    case 'a':
+    player.velocity.x = -5  
+    break
+    case 's':
+    player.velocity.y = 5  
+    break
+    case 'd':
+    player.velocity.x = 5  
+    break
+ }
+
+ console.log(player.velocity)
+})
