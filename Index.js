@@ -76,11 +76,15 @@ map.forEach((row, i) => {
     })
 })
 
-boundaries.forEach((Boundary) => {
-    Boundary.draw()
-})
-
+function animate() {
+    requestAnimationFrame(animate)
+    boundaries.forEach((Boundary) => {
+        Boundary.draw()
+    })
 player.update()
+}
+
+animate()
 
 addEventListener('keydown', ({ key }) => {
 switch(key) {
