@@ -70,11 +70,11 @@ const keys = {
 
 let lastKey = ''
 
-const map = [['-', '-', '-', '-', '-', '-'],
-             ['-', ' ', ' ', ' ', ' ', '-'],
-             ['-', ' ', '-', '-', ' ', '-'],
-             ['-', ' ', ' ', ' ', ' ', '-'],
-             ['-', '-', '-', '-', '-', '-']
+const map = [['-', '-', '-', '-', '-', '-', '-'],
+             ['-', ' ', ' ', ' ', ' ', ' ', '-'],
+             ['-', ' ', '-', ' ', '-', ' ', '-'],
+             ['-', ' ', ' ', ' ', ' ', ' ', '-'],
+             ['-', '-', '-', '-', '-', '-', '-']
 ]
 
 map.forEach((row, i) => {
@@ -97,6 +97,18 @@ map.forEach((row, i) => {
 function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, canvas.width, canvas.height)
+    
+    if (keys.w.pressed && lastKey === 'w') {
+        player.velocity.y = -5
+    } else if (keys.a.pressed && lastKey === 'a') {
+        player.velocity.x = -5
+    } else if (keys.s.pressed && lastKey === 's') {
+        player.velocity.y = 5 
+    }else if (keys.d.pressed && lastKey === 'd') {
+        player.velocity.x = 5        
+    }
+
+
     boundaries.forEach((Boundary) => {
         Boundary.draw()
 
@@ -122,15 +134,7 @@ function animate() {
     //player.velocity.x = 0
     //player.velocity.y = 0 
 
-    if (keys.w.pressed && lastKey === 'w') {
-        player.velocity.y = -5
-    } else if (keys.a.pressed && lastKey === 'a') {
-        player.velocity.x = -5
-    } else if (keys.s.pressed && lastKey === 's') {
-        player.velocity.y = 5 
-    }else if (keys.d.pressed && lastKey === 'd') {
-        player.velocity.x = 5        
-    }
+   
 }
 animate()
 
