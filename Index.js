@@ -78,6 +78,7 @@ map.forEach((row, i) => {
 
 function animate() {
     requestAnimationFrame(animate)
+    c.clearRect(0, 0, canvas.width, canvas.height)
     boundaries.forEach((Boundary) => {
         Boundary.draw()
     })
@@ -104,3 +105,22 @@ switch(key) {
 
  console.log(player.velocity)
 })
+
+addEventListener('keyup', ({ key }) => {
+    switch(key) {
+        case 'w':
+        player.velocity.y = 0  
+        break
+        case 'a':
+        player.velocity.x = 0  
+        break
+        case 's':
+        player.velocity.y = 0  
+        break
+        case 'd':
+        player.velocity.x = 0  
+        break
+     }
+    
+     console.log(player.velocity)
+    })
