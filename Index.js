@@ -74,6 +74,8 @@ const map = [['-', '-', '-', '-', '-', '-', '-'],
              ['-', ' ', ' ', ' ', ' ', ' ', '-'],
              ['-', ' ', '-', ' ', '-', ' ', '-'],
              ['-', ' ', ' ', ' ', ' ', ' ', '-'],
+             ['-', ' ', '-', ' ', '-', ' ', '-'],
+             ['-', ' ', ' ', ' ', ' ', ' ', '-'],
              ['-', '-', '-', '-', '-', '-', '-']
 ]
 
@@ -94,37 +96,75 @@ map.forEach((row, i) => {
     })
 })
 
+function circleClollidesWithRectangle( { circle, rectangle}) { 
+    return (
+        circle.position.y - circle.radius + circle.velocity.y 
+        <= 
+        rectangle.position.y + rectangle.height && 
+        circle.position.x + circle.radius + circle.velocity.x  
+        >= 
+        rectangle.position.x && 
+        circle.position.y + circle.radius + circle.velocity.y 
+        >= rectangle.position.y && 
+        circle.position.x  - circle.radius + circle.velocity.x 
+        <= 
+        rectangle.position.x + rectangle.width)
+}
 function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, canvas.width, canvas.height)
     
     if (keys.w.pressed && lastKey === 'w') {
-        player.velocity.y = -5
+        for (let i = 0; i < boundaries.length; i++) {
+          const Boundary = boundaries [i]
+            if (
+            circleClollidesWithRectangle({
+                 circle: {...player, velocity: {
+                   x: 0,
+                   y: -5 
+                  }},
+                 rectangle: Boundary
+            })
+          ) {
+            player.velocity.y = 0
+            break
+          } else {
+            player.velocity.y = -5
+          }
+        }
     } else if (keys.a.pressed && lastKey === 'a') {
         player.velocity.x = -5
     } else if (keys.s.pressed && lastKey === 's') {
-        player.velocity.y = 5 
+        for (let i = 0; i < boundaries.length; i++) {
+            const Boundary = boundaries [i]
+              if (
+              circleClollidesWithRectangle({
+                   circle: {...player, velocity: {
+                     x: 0,
+                     y: 5 
+                    }},
+                   rectangle: Boundary
+              })
+            ) {
+              player.velocity.y = 0
+              break
+            } else {
+              player.velocity.y = 5
+            }
+          }
     }else if (keys.d.pressed && lastKey === 'd') {
         player.velocity.x = 5        
     }
-
 
     boundaries.forEach((Boundary) => {
         Boundary.draw()
 
         if (
-            player.position.y - player.radius + player.velocity.y 
-            <= 
-            Boundary.position.y + Boundary.height && 
-            player.position.x + player.radius + player.velocity.x  
-            >= 
-            Boundary.position.x && 
-            player.position.y + player.radius + player.velocity.y 
-            >= Boundary.position.y && 
-            player.position.x  - player.radius + player.velocity.x 
-            <= 
-            Boundary.position.x + Boundary.width)
-         {
+       circleClollidesWithRectangle({
+            circle: player,
+            rectangle: Boundary
+       })
+      ){
             console.log('We are Colliding')
             player.velocity.x = 0
             player.velocity.y = 0
