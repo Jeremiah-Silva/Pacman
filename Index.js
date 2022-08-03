@@ -99,10 +99,28 @@ function animate() {
     c.clearRect(0, 0, canvas.width, canvas.height)
     boundaries.forEach((Boundary) => {
         Boundary.draw()
+
+        if (
+            player.position.y - player.radius + player.velocity.y 
+            <= 
+            Boundary.position.y + Boundary.height && 
+            player.position.x + player.radius + player.velocity.x  
+            >= 
+            Boundary.position.x && 
+            player.position.y + player.radius + player.velocity.y 
+            >= Boundary.position.y && 
+            player.position.x  - player.radius + player.velocity.x 
+            <= 
+            Boundary.position.x + Boundary.width)
+         {
+            console.log('We are Colliding')
+            player.velocity.x = 0
+            player.velocity.y = 0
+        }
     })
     player.update()
-    player.velocity.x = 0
-    player.velocity.y = 0 
+    //player.velocity.x = 0
+    //player.velocity.y = 0 
 
     if (keys.w.pressed && lastKey === 'w') {
         player.velocity.y = -5
