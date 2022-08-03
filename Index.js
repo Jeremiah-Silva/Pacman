@@ -74,11 +74,11 @@ let lastKey = ''
 
 const map = [['1', '-', '-', '-', '-', '-', '2'],
              ['|', ' ', ' ', ' ', ' ', ' ', '|'],
-             ['|', ' ', '-', ' ', '-', ' ', '|'],
+             ['|', ' ', 'b', ' ', 'b', ' ', '|'],
              ['|', ' ', ' ', ' ', ' ', ' ', '|'],
-             ['|', ' ', '-', ' ', '-', ' ', '|'],
+             ['|', ' ', 'b', ' ', 'b', ' ', '|'],
              ['|', ' ', ' ', ' ', ' ', ' ', '|'],
-             ['3', '-', '-', '-', '-', '-', '4']
+             ['4', '-', '-', '-', '-', '-', '3']
 ]
 
 function createImage(src) {
@@ -110,6 +110,61 @@ map.forEach((row, i) => {
                     y: Boundary.height * i
                  },
                  image: createImage('./img/pipeVertical.png')
+               })
+              )
+              break
+              case '1': 
+              boundaries.push(
+                new Boundary({
+                position: {
+                    x: Boundary.width * j, 
+                    y: Boundary.height * i
+                 },
+                 image: createImage('./img/pipeCorner1.png')
+               })
+              )
+              break
+              case '2': 
+              boundaries.push(
+                new Boundary({
+                position: {
+                    x: Boundary.width * j, 
+                    y: Boundary.height * i
+                 },
+                 image: createImage('./img/pipeCorner2.png')
+               })
+              )
+              break
+              case '3': 
+              boundaries.push(
+                new Boundary({
+                position: {
+                    x: Boundary.width * j, 
+                    y: Boundary.height * i
+                 },
+                 image: createImage('./img/pipeCorner3.png')
+               })
+              )
+              break
+              case '4': 
+              boundaries.push(
+                new Boundary({
+                position: {
+                    x: Boundary.width * j, 
+                    y: Boundary.height * i
+                 },
+                 image: createImage('./img/pipeCorner4.png')
+               })
+              )
+              break
+              case 'b': 
+              boundaries.push(
+                new Boundary({
+                position: {
+                    x: Boundary.width * j, 
+                    y: Boundary.height * i
+                 },
+                 image: createImage('./img/block.png')
                })
               )
         }
