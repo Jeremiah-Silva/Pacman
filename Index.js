@@ -555,19 +555,51 @@ function animate() {
 
       })
       if (collisions.length > ghost.prevCollisions.length)
-      ghost.prevCollisions =  collisions
+          ghost.prevCollisions = collisions
 
       if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions))  {
         //console.log('gogo')
 
+        if(ghost.velocity.x > 0) ghost.prevCollisions.push('right')
+        else if (ghost.velocity.x < 0) ghost.prevCollisions.push('left')
+        else if (ghost.velocity.y < 0) ghost.prevCollisions.push('up')
+        else if (ghost.velocity.y > 0) ghost.prevCollisions.push('down')
+
         console.log(collisions)
         console.log(ghost.prevCollisions)
-        if(gosth.velocity.x > 0) ghost.prevCollisions.push('right')
 
-        const pathways = ghost.prevCollisions.filter(collision => {
-          return collision.includes(collision)
+        const pathways = ghost.prevCollisions.filter((collision) => {
+          return !collisions.includes(collision)
         })
-        console.log({pathways})
+        console.log({ pathways })
+        
+        const direction = pathways[Math.floor(Math.random() * pathways.length)]
+
+        console.log({ direction })
+
+        switch (direction) {
+          case 'down': 
+             ghost.velocity.y = 5
+             ghost.velocity.x = 0
+             break
+
+          case 'up': 
+             ghost.velocity.y = -5
+             ghost.velocity.x = 0
+             break
+
+          case 'right': 
+             ghost.velocity.y = 0
+             ghost.velocity.x = 5
+             break
+
+          case 'left': 
+             ghost.velocity.y = 0
+             ghost.velocity.x = -5
+             break
+        }
+
+        ghost.prevCollisions = []
       }
       //console.log(collisions)  
     })
