@@ -104,7 +104,7 @@ const boundaries = []
 const ghosts = [
   new Ghost({
     position: { 
-                x: Boundary.width * 7 + Boundary.width / 2,
+                x: Boundary.width * 6 + Boundary.width / 2,
                 y: Boundary.height + Boundary.height / 2
     },
     velocity: {
@@ -487,9 +487,75 @@ function animate() {
       player.update()
 
       ghosts.forEach((ghost) => {
-        ghost.update()
-      })
-}
+        ghost.update()  
+        
+        const collisions = []
+        boundaries.forEach(Boundary => {
+          if (
+            circleClollidesWithRectangle({
+                  circle: {
+                    ...ghost, 
+                    velocity: {
+                      x: 5,
+                      y: 0 
+                    }
+                  },
+                  rectangle: Boundary
+                  })
+                ) {
+                  collisions.push('right')
+                }
+
+                if (
+                  circleClollidesWithRectangle({
+                        circle: {
+                          ...ghost, 
+                          velocity: {
+                            x: -5,
+                            y: 0 
+                          }
+                        },
+                        rectangle: Boundary
+                        })
+                      ) {
+                        collisions.push('left')
+                      }
+
+                      if (
+                        circleClollidesWithRectangle({
+                              circle: {
+                                ...ghost, 
+                                velocity: {
+                                  x: 0,
+                                  y: -5 
+                                }
+                              },
+                              rectangle: Boundary
+                              })
+                            ) {
+                              collisions.push('up')
+                            }      
+
+                            if (
+                              circleClollidesWithRectangle({
+                                    circle: {
+                                      ...ghost, 
+                                      velocity: {
+                                        x: 0,
+                                        y: 5 
+                                      }
+                                    },
+                                    rectangle: Boundary
+                                    })
+                                  ) {
+                                    collisions.push('down')
+                                  }
+
+      })      
+      console.log(collisions)  
+    })
+  }
+
     //player.velocity.x = 0
     //player.velocity.y = 0 
 animate()
