@@ -104,8 +104,8 @@ const boundaries = []
 const ghosts = [
   new Ghost({
     position: { 
-                x:0,
-                y:0
+                x: Boundary.width * 6 + Boundary.width / 2,
+                y: Boundary.height + Boundary.height / 2
     },
     velocity: {
                 x:0,
@@ -115,7 +115,7 @@ const ghosts = [
 ]
 const player = new Player({
     position: {
-        x: Boundary.width + Boundary.width / 2,
+        x: Boundary.width  + Boundary.width / 2,
         y: Boundary.height + Boundary.height / 2
     },
     velocity: {
