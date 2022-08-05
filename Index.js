@@ -9,94 +9,94 @@ canvas.height = innerHeight
 class Boundary {
     static width = 40 
     static height = 40
-    constructor({ position, image }) {
-        this.position = position
-        this.width = 40
-        this.height = 40
-        this.image = image
-    }
+      constructor({ position, image }) {
+          this.position = position
+          this.width = 40
+          this.height = 40
+          this.image = image
+      }
 
-    draw() {
+      draw() {
         //c.fillStyle = 'blue'
         //c.fillRect(this.position.x, this.position.y, this.width, this.height)
         c.drawImage(this.image, this.position.x, this.position.y)
-    }
+      }
 }
 
 class Player {
-    constructor({ position, velocity }) {
-        this.position = position 
-        this.velocity = velocity
-        this.radius = 15
-    }
+      constructor({ position, velocity }) {
+          this.position = position 
+          this.velocity = velocity
+          this.radius = 15
+      }
 
-    draw() {
+      draw() {
         c.fillStyle = 'yellow'
         c.beginPath()
         c.arc(
-            this.position.x, 
-            this.position.y, 
-            this.radius, 
-            0, 
-            Math.PI * 2)
+             this.position.x, 
+             this.position.y, 
+             this.radius, 
+             0, 
+             Math.PI * 2)
         c.fill()
         c.closePath()
-    }
+      }
 
-    update() {
+      update() {
         this.draw()
-        this.position.x += this.velocity.x
-        this.position.y += this.velocity.y
-    }
+            this.position.x += this.velocity.x
+            this.position.y += this.velocity.y
+      }
 }
 
 class Ghost {
-  constructor({ position, velocity, color ='red' }) {
-      this.position = position 
-      this.velocity = velocity
-      this.radius = 15
-      this.color = color
-  }
+      constructor({ position, velocity, color ='red' }) {
+          this.position = position 
+          this.velocity = velocity
+          this.radius = 15
+          this.color = color
+      }
 
-  draw() {
-      c.fillStyle = this.color
-      c.beginPath()
-      c.arc(
-          this.position.x, 
-          this.position.y, 
-          this.radius, 
-          0, 
-          Math.PI * 2)
-      c.fill()
-      c.closePath()
-  }
+      draw() {
+        c.fillStyle = this.color
+        c.beginPath()
+        c.arc(
+             this.position.x, 
+             this.position.y, 
+             this.radius, 
+             0, 
+             Math.PI * 2)
+        c.fill()
+        c.closePath()
+      }
 
-  update() {
-      this.draw()
-      this.position.x += this.velocity.x
-      this.position.y += this.velocity.y
-  }
+      update() {
+            this.draw()
+                this.position.x += this.velocity.x
+                this.position.y += this.velocity.y
+      }
 }
 
 
 class Pellet {
-    constructor({ position, }) {
-        this.position = position 
-        this.radius = 3
-    }
+      constructor({ position, }) {
+          this.position = position 
+          this.radius = 3
+      }
 
-    draw() {
+      draw() {
         c.fillStyle = 'white'
         c.beginPath()
         c.arc(
-            this.position.x, 
-            this.position.y, 
-            this.radius, 
-            0, 
-            Math.PI * 2)
+             this.position.x, 
+             this.position.y, 
+             this.radius, 
+             0, 
+             Math.PI * 2)
         c.fill()
         c.closePath()
-    }
+      }
 }
 
 const pellets =[]
