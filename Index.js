@@ -104,7 +104,7 @@ const boundaries = []
 const ghosts = [
   new Ghost({
     position: { 
-                x: Boundary.width * 6 + Boundary.width / 2,
+                x: Boundary.width * 7 + Boundary.width / 2,
                 y: Boundary.height + Boundary.height / 2
     },
     velocity: {
