@@ -56,6 +56,7 @@ class Ghost {
           this.velocity = velocity
           this.radius = 15
           this.color = color
+          this.prevCollisions = []
       }
 
       draw() {
@@ -77,8 +78,6 @@ class Ghost {
                 this.position.y += this.velocity.y
       }
 }
-
-
 class Pellet {
       constructor({ position, }) {
           this.position = position 
@@ -98,7 +97,6 @@ class Pellet {
         c.closePath()
       }
 }
-
 const pellets =[]
 const boundaries = []
 const ghosts = [
@@ -108,7 +106,7 @@ const ghosts = [
                 y: Boundary.height + Boundary.height / 2
     },
     velocity: {
-                x:0,
+                x:5,
                 y:0
   }
 })
@@ -492,6 +490,7 @@ function animate() {
         const collisions = []
         boundaries.forEach(Boundary => {
           if (
+            !collisions.includes('right') && 
             circleClollidesWithRectangle({
                   circle: {
                     ...ghost, 
@@ -507,6 +506,7 @@ function animate() {
                 }
 
                 if (
+                  !collisions.includes('left') && 
                   circleClollidesWithRectangle({
                         circle: {
                           ...ghost, 
@@ -522,6 +522,7 @@ function animate() {
                       }
 
                       if (
+                        !collisions.includes('up') && 
                         circleClollidesWithRectangle({
                               circle: {
                                 ...ghost, 
@@ -537,6 +538,7 @@ function animate() {
                             }      
 
                             if (
+                              !collisions.includes('down') && 
                               circleClollidesWithRectangle({
                                     circle: {
                                       ...ghost, 
@@ -551,8 +553,23 @@ function animate() {
                                     collisions.push('down')
                                   }
 
-      })      
-      console.log(collisions)  
+      })
+      if (collisions.length > ghost.prevCollisions.length)
+      ghost.prevCollisions =  collisions
+
+      if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions))  {
+        //console.log('gogo')
+
+        console.log(collisions)
+        console.log(ghost.prevCollisions)
+        if(gosth.velocity.x > 0) ghost.prevCollisions.push('right')
+
+        const pathways = ghost.prevCollisions.filter(collision => {
+          return collision.includes(collision)
+        })
+        console.log({pathways})
+      }
+      //console.log(collisions)  
     })
   }
 
