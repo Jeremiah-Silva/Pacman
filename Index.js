@@ -28,6 +28,8 @@ class Player {
           this.position = position 
           this.velocity = velocity
           this.radius = 15
+          this.radians = 0.75
+          this.openRate = 0.12
       }
 
       draw() {
@@ -37,8 +39,8 @@ class Player {
              this.position.x, 
              this.position.y, 
              this.radius, 
-             0.75, 
-             Math.PI * 2 - 0.75)
+             this.radians, 
+             Math.PI * 2 - this.radians)
         c.lineTo(this.position.x, this.position.y)     
         c.fill()
         c.closePath()
@@ -48,6 +50,10 @@ class Player {
         this.draw()
             this.position.x += this.velocity.x
             this.position.y += this.velocity.y
+            if (this.radians < 0 || this.radians > .75) this.openRate = -this.openRate
+
+            this.radians += this.openRate
+
       }
 }
 
