@@ -717,11 +717,12 @@ if(pellets.length === 0 ) {
       }
       //console.log(collisions)  
     })
+    if(player.velocity.x > 0) player.rotation = 0
+    else if(player.velocity.x < 0) player.rotation = Math.PI
+    else if(player.velocity.y > 0) player.rotation = Math.PI /2
+    else if(player.velocity.y < 0) player.rotation = Math.PI * 1.5
   }
-  if(player.velocity.x > 0) player.rotation = 0
-  else if(player.velocity.x < 0) player.rotation = Math.PI
-  else if(player.velocity.y > 0) player.rotation = Math.PI /2
-  else if(player.velocity.y < 0) player.rotation = Math.PI * 1.5
+
 animate() // end of animate()
 
 addEventListener('keydown', ({ key }) => {
