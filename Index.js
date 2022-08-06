@@ -37,8 +37,9 @@ class Player {
              this.position.x, 
              this.position.y, 
              this.radius, 
-             0, 
-             Math.PI * 2)
+             0.75, 
+             Math.PI * 2 - 0.75)
+        c.lineTo(this.position.x, this.position.y)     
         c.fill()
         c.closePath()
       }
