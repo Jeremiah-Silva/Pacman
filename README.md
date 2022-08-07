@@ -23,7 +23,11 @@ or you can click on the website https://pacman-tau.vercel.app/Index.html to exec
 
 # Commands to play
 
+
 w - up
+
 s - down
+
 a - left
+
 d - right
