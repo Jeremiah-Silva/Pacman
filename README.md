@@ -18,5 +18,6 @@ HTML and CSS codes.
 Here, the user-defined header file creates the source code, 
 the behavior and moving direction of the Pacman are controlled by JavaScript code. 
 
-You can clone this game by git clone ..... or you can click on the website .... 
+You can clone this game by git clone:  ..... or you can click on the website 
+https://pacman-tau.vercel.app/Index.html
 to execute it to get a better understanding about this game.
