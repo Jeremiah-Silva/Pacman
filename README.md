@@ -12,8 +12,8 @@ You can score more if you eat more paths.
 
 This is a game application that has realistic nature and is simple to play. 
 
-Pacman Game Project is a c console-based application, designed using JavaSript, 
-HTML and CSS codes. 
+Pacman Game Project is a c console-based application, designed using JavaSript and
+HTML codes. 
 
 Here, the user-defined header file creates the source code, 
 the behavior and moving direction of the Pacman are controlled by JavaScript code. 
