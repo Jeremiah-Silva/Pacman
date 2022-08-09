@@ -23,6 +23,10 @@ the behavior and moving direction of the Pacman are controlled by JavaScript cod
 You can clone this game by git clone using this command git clone https://github.com/Jeremiah-Silva/Pacman.git 
 or you can click on the website https://pacman-tau.vercel.app/Index.html to execute.
 
+
+![PacManImage Game](https://user-images.githubusercontent.com/108309798/183678316-cd43f121-43ca-44c2-be5f-2a5f5f7df753.png)
+
+
 # Commands to play
 
 
@@ -35,6 +39,3 @@ a - Left :arrow_left:
 d - Right :arrow_right:
 
 ![PacManImage Game](https://user-images.githubusercontent.com/108309798/183678119-3b4502b1-201f-436a-bc85-9f072376e655.png)
-
-
-
