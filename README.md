@@ -33,3 +33,8 @@ s - Down :arrow_down:
 a - Left :arrow_left:
 
 d - Right :arrow_right:
+
+![PacManImage Game](https://user-images.githubusercontent.com/108309798/183678119-3b4502b1-201f-436a-bc85-9f072376e655.png)
+
+
+
