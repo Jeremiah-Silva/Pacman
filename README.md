@@ -1,4 +1,4 @@
-# Pacman
+# Pacman <a href="" target="_blank"><img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black" target="_blank"></a><br></br>
 
 
 In this JavaScript Project source code series I was created a simple Pacman Game 
