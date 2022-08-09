@@ -1,4 +1,5 @@
-# Pacman <br>
+# Pacman <br>![pacman](https://user-images.githubusercontent.com/108309798/183585760-464542c4-4d01-40ca-a303-07540bc7d15e.png)
+
 <a href="" target="_blank"><img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=for-the-badge&logo=JavaScript&logoColor=black" target="_blank"></a><a href="" target="_blank"><img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=for-the-badge&logo=HTML5&logoColor=white" target="_blank"></a><br></br>
 
 
